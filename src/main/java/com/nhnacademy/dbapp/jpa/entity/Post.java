@@ -56,7 +56,7 @@ public class Post {
     private LocalDateTime modifyAt;
 
 
-    private Boolean available;
+    private Boolean isDeleted;
 
     //Mapped
     @OneToMany(mappedBy = "post")

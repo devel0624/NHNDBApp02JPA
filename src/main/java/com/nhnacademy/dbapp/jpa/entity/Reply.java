@@ -49,6 +49,6 @@ public class Reply {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    private Boolean available;
+    private Boolean isDeleted;
 
 }
