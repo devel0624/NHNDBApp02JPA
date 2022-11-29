@@ -1,9 +1,3 @@
-create table LikeAtPost
-(
-    post_id int not null,
-    user_id int not null,
-    primary key (post_id, user_id)
-);
 
 create table Posts
 (
