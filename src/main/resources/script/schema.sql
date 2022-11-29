@@ -1,35 +1,36 @@
-
-create table Posts
-(
-    post_id        int                  not null
-        primary key,
-    title          varchar(30)          not null,
-    content        varchar(2000)        not null,
-    write_user_id  int                  not null,
-    created_at     datetime             not null,
-    isDeleted      tinyint(1) default 0 not null,
-    modify_user_id int                  null,
-    modify_at      datetime             null
+CREATE TABLE `Users` (
+     `user_id`	INTEGER	NOT NULL,
+     `username`	VARCHAR(20)	NOT NULL,
+     `password`	VARCHAR(30)	NOT NULL,
+     `created_at`	DATETIME	NOT NULL,
+     `admin`	Boolean	NOT NULL	DEFAULT 0
 );
 
-create table Replies
-(
-    reply_id   int                  not null,
-    post_id    int                  not null,
-    user_id    int                  not null,
-    content    varchar(500)         not null,
-    created_at datetime             not null,
-    isDeleted  tinyint(1) default 0 not null,
-    primary key (reply_id, post_id)
+CREATE TABLE `Posts` (
+     `post_id`	INTEGER	NOT NULL,
+     `title`	VARCHAR(30)	NOT NULL,
+     `content`	VARCHAR(2000)	NOT NULL,
+     `write_user_id`	INTEGER	NOT NULL,
+     `created_at`	DATETIME	NOT NULL,
+     `isDeleted`	Boolean	NOT NULL	DEFAULT 0,
+     `modify_user_id`	INTEGER	NULL,
+     `modify_at`	DATETIME	NULL
 );
 
-create table Users
-(
-    user_id    int                  not null
-        primary key,
-    username   varchar(20)          not null,
-    password   varchar(30)          not null,
-    created_at datetime             not null,
-    admin      tinyint(1) default 0 not null
+CREATE TABLE `Replies` (
+       `reply_id`	INTEGER	NOT NULL,
+       `post_id`	INTEGER	NOT NULL,
+       `user_id`	INTEGER	NOT NULL,
+       `content`	VARCHAR(500)	NOT NULL,
+       `created_at`	DATETIME	NOT NULL,
+       `isDeleted`	Boolean	NOT NULL	DEFAULT 0
 );
+
+CREATE TABLE `LikeAtPost` (
+      `post_id`	INTEGER	NOT NULL,
+      `user_id`	INTEGER	NOT NULL
+);
+
+
+
 
