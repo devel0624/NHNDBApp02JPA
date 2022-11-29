@@ -14,7 +14,7 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-@Entity
+//@Entity
 @Table(name = "LikeAtPost")
 public class LikeAtPost {
 

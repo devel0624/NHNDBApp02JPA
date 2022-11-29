@@ -45,7 +45,7 @@ public class EntityTest {
         entityManager.persist(user);
 
         Post post = new Post();
-        post.setUserId(1L);
+        post.setWriteUser(user);
         post.setTitle("title");
         post.setContent("content");
         post.setCreatedAt(LocalDateTime.now());
@@ -54,16 +54,12 @@ public class EntityTest {
 
         Reply reply = new Reply();
 
-        reply.setUserId(1L);
-        reply.setPostId(1L);
+        reply.setUser(user);
+        reply.setPost(post);
         reply.setContent("ReplyContent");
         reply.setCreatedAt(LocalDateTime.now());
 
         entityManager.persist(reply);
-
-        LikeAtPost likeAtPost = new LikeAtPost();
-
-        likeAtPost.setPk(new LikeAtPost.Pk(1L,1L));
     }
 
 }

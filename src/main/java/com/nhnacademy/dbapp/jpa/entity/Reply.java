@@ -27,13 +27,22 @@ public class Reply {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long replyId;
 
-    //join post
-    @Column(name = "post_id")
-    private Long postId;
+//    //join post
+//    @Column(name = "post_id")
+//    private Long postId;
 
-    //join user
-    @Column(name = "user_id")
-    private Long userId;
+    @MapsId
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post;
+
+//    //join user
+//    @Column(name = "user_id")
+//    private Long userId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     private String content;
 
@@ -41,15 +50,5 @@ public class Reply {
     private LocalDateTime createdAt;
 
     private Boolean available;
-
-    @MapsId
-    @ManyToOne
-    @JoinColumn(name = "post_id")
-    private Post post;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
 
 }

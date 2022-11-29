@@ -33,32 +33,33 @@ public class Post {
 
     private String content;
 
-    //join user
-    @Column(name = "user_id")
-    private Long userId;
+//    join user
+//    @Column(name = "user_id")
+//    private Long userId;
+
+    @ManyToOne
+    @JoinColumn(name = "write_user_id")
+    private User writeUser;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     //join user
-    @Column(name = "modify_user_id")
-    private Long modifyUserId;
+//    @Column(name = "modify_user_id")
+//    private Long modifyUserId;
+
+    @ManyToOne
+    @JoinColumn(name = "modify_user_id")
+    private User modifyUser;
 
     @Column(name = "modify_at")
     private LocalDateTime modifyAt;
 
+
     private Boolean available;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User modifyUser;
-
-    @OneToMany(orphanRemoval = true)
-    @JoinColumn(name = "post_post_id")
+    //Mapped
+    @OneToMany(mappedBy = "post")
     private List<Reply> replies;
 
 }

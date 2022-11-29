@@ -39,16 +39,16 @@ public class User {
 
     private Boolean admin;
 
-    @OneToMany
-    @JoinColumn(name = "user_id")
+    //Mapped
+    @OneToMany(mappedBy = "writeUser")
+    private List<Post> writePosts;
+
+    @OneToMany(mappedBy = "modifyUser")
+    private List<Post> modifyPosts;
+
+    @OneToMany(mappedBy = "user")
     private List<Reply> replies;
 
 
-    @OneToMany
-    @JoinColumn(name = "user_id")
-    private List<Post> posts;
 
-    @OneToMany
-    @JoinColumn(name = "user_id")
-    private List<Post> modifyPosts;
 }
