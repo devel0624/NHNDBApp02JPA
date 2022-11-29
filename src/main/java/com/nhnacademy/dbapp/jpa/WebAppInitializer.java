@@ -1,7 +1,7 @@
 package com.nhnacademy.dbapp.jpa;
 
-import com.nhnacademy.springjpa.config.RootConfig;
-import com.nhnacademy.springjpa.config.WebConfig;
+import com.nhnacademy.dbapp.jpa.config.RootConfig;
+import com.nhnacademy.dbapp.jpa.config.WebConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {

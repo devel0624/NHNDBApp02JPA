@@ -1,9 +1,11 @@
 package com.nhnacademy.dbapp.jpa.entity;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 /**
  * CREATE TABLE `Replies` (
@@ -17,6 +19,7 @@ import java.sql.Timestamp;
  */
 
 @Getter
+@Setter
 @Entity
 @Table(name = "Replies")
 public class Reply {
@@ -35,8 +38,18 @@ public class Reply {
     private String content;
 
     @Column(name = "created_at")
-    private Timestamp createdAt;
+    private LocalDateTime createdAt;
 
     private Boolean available;
+
+    @MapsId
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 
 }

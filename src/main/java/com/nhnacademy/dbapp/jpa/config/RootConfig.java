@@ -1,6 +1,6 @@
 package com.nhnacademy.dbapp.jpa.config;
 
-import com.nhnacademy.springjpa.Base;
+import com.nhnacademy.dbapp.jpa.Base;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

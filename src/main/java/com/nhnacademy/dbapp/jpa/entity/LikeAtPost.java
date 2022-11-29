@@ -1,9 +1,6 @@
 package com.nhnacademy.dbapp.jpa.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,28 +13,33 @@ import java.io.Serializable;
  */
 
 @Getter
+@Setter
 @Entity
 @Table(name = "LikeAtPost")
-@IdClass(LikeAtPost.Pk.class)
 public class LikeAtPost {
 
-    //join post
-    @Id
-    @Column(name = "post_id")
-    private Long postId;
+    @EmbeddedId
+    private Pk pk;
 
-    //join user
-    @Id
-    @Column(name = "user_id")
-    private Long userId;
+    @MapsId
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post;
+
+    @MapsId
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @NoArgsConstructor
     @AllArgsConstructor
     @EqualsAndHashCode
+    @Embeddable
     public static class Pk implements Serializable {
+        @Column(name = "post_id")
         private Long postId;
 
+        @Column(name = "user_id")
         private Long userId;
-
     }
 }

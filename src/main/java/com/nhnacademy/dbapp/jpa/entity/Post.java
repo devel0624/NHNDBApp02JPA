@@ -1,9 +1,14 @@
 package com.nhnacademy.dbapp.jpa.entity;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * CREATE TABLE `Posts` (
@@ -16,6 +21,7 @@ import java.sql.Timestamp;
  * );
  */
 @Getter
+@Setter
 @Entity
 @Table(name = "Posts")
 public class Post {
@@ -32,15 +38,27 @@ public class Post {
     private Long userId;
 
     @Column(name = "created_at")
-    private Timestamp createdAt;
+    private LocalDateTime createdAt;
 
     //join user
     @Column(name = "modify_user_id")
     private Long modifyUserId;
 
     @Column(name = "modify_at")
-    private Timestamp modifyAt;
+    private LocalDateTime modifyAt;
 
     private Boolean available;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User modifyUser;
+
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "post_post_id")
+    private List<Reply> replies;
 
 }
